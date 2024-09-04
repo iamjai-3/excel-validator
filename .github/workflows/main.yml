@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  test-job:
+  test-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,9 +23,6 @@ jobs:
 
       - name: Test
         run: npm test
-
-      - name: Bump version
-        run: npm version patch -m "Release version %s"
 
       - name: Publish to NPM
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
